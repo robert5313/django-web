@@ -11,16 +11,32 @@ class User(AbstractUser):
         return self.username
     
 class Student(models.Model):
+    STATUS = [("active", "Active"), ("inactive", "Inactive")]
+
+    GENDER = [("male", "Male"), ("female", "Female")]
+
+    current_status = models.CharField(max_length=10, choices=STATUS, default="active")
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    gender = models.CharField(max_length=10, choices=GENDER, default="male")
     roll_no = models.CharField(max_length=10)
     course = models.CharField(max_length=10)
     year = models.IntegerField()
     section = models.CharField(max_length=1)
+    phone_number = models.CharField(max_length=10, blank=True)
+    city = models.CharField(max_length=20, blank=True)
+    country = models.CharField(max_length=20, blank=True)
+    image = models.ImageField(upload_to='profile_pics/', blank=True)
     def __str__(self):
         return self.user.username
     
 class Teacher(models.Model):
+    STATUS = [("active", "Active"), ("inactive", "Inactive")]
+    GENDER = [("male", "Male"), ("female", "Female")]
+
+    current_status = models.CharField(max_length=10, choices=STATUS, default="active")
+    gender = models.CharField(max_length=10, choices=GENDER, default="male")
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    phone_number = models.CharField(max_length=10, blank=True)
     teacher_id = models.CharField(max_length=10)
     def __str__(self):
         return self.user.username

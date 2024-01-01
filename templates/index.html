@@ -1,0 +1,53 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+    {% load staticfiles %}  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+</head>  
+<body>  
+<form method="POST" class="post-form" action="/student_profile">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Enter Details</h3>  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Student roll_no:</label>  
+    <div class="col-sm-4">  
+      {{ form.sroll_no }}  
+    </div>  
+  </div>  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Student Name:</label>
+    <div class="col-sm-4">  
+      {{ form.sname }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Student Email:</label>
+    <div class="col-sm-4">  
+      {{ form.semail }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Student Phone:</label>  
+    <div class="col-sm-4">  
+      {{ form.sphone }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-primary">Submit</button>  
+    </div>  
+  </div>  
+    </div>  
+</form>  
+</body>  
+</html>  
