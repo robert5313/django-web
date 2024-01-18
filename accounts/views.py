@@ -21,9 +21,6 @@ class SignUpView(CreateView):
         return super().form_valid(form)
 
 
-def student_profile(request):
-    if request.method == "POST":
-        form = StudentForm(request.POST, request.FILES, instance=request.user.student)
-        if form.is_valid():
-            form.save()
-            return redirect("student_profile")
+def student(request):
+    my_student = Student.objects.get(user=request.user)
+    return render(request, "student.html", {"my_student": my_student})
